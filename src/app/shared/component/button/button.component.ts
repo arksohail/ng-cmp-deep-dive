@@ -1,21 +1,15 @@
 import { Component, input } from '@angular/core';
 
 @Component({
-  selector: 'app-button',
+  selector: 'button[appButton]',
   standalone: true,
   imports: [],
   template: `
-    <button>
-      <span>
-        {{data().title}}
-      </span>
-      <span class="icon">
-        {{data().icon}}
-      </span>
-    </button>
+    <span>{{data().title}}</span>
+    <span class="icon">{{data().icon}}</span>
   `,
   styles: ``
 })
 export class ButtonComponent {
-  data = input.required<{title: string, icon: string}>();
+  data = input.required<{ title: string, icon: string }>();
 }
