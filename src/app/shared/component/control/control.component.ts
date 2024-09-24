@@ -28,7 +28,10 @@ import { Component, input, ViewEncapsulation } from '@angular/core';
       font-size: 0.9rem;
       color: #4f4b53;
     }
-  `
+  `,
+  host: {
+    class: 'control'
+  }
 })
 export class ControlComponent {
   title = input.required<string>();
