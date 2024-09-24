@@ -5,11 +5,11 @@ import { Component, input } from '@angular/core';
   standalone: true,
   imports: [],
   template: `
-    <span>{{data().title}}</span>
-    <span class="icon">{{data().icon}}</span>
+    <span>
+      <ng-content />
+    </span>
+    <ng-content select=".icon" />
   `,
   styles: ``
 })
-export class ButtonComponent {
-  data = input.required<{ title: string, icon: string }>();
-}
+export class ButtonComponent {}
