@@ -6,10 +6,8 @@ import { Component, input, ViewEncapsulation } from '@angular/core';
   imports: [],
   encapsulation: ViewEncapsulation.None,
   template: `
-    <p class="control">
-      <label [for]="id()">{{title()}}</label>
-       <ng-content select="input, textarea" />
-    </p>
+    <label [for]="id()">{{title()}}</label>
+    <ng-content select="input, textarea" />
   `,
   styles: `
     .control label {
