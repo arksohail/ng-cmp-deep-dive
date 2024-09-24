@@ -1,4 +1,4 @@
-import { Component, Input, input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { DashboardItem } from '../../interface/dashboard-item';
 
 @Component({
@@ -9,7 +9,5 @@ import { DashboardItem } from '../../interface/dashboard-item';
   styleUrl: './dashboard-item.component.css'
 })
 export class DashboardItemComponent {
-  item = input.required<DashboardItem>()
-  // @Input({required: true}) image!: {src: string, alt: string};
-  // @Input({required: true}) title!: string;
+  item = input.required<DashboardItem>();
 }
