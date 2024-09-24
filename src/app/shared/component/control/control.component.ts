@@ -29,14 +29,14 @@ import { Component, HostBinding, HostListener, input, ViewEncapsulation } from '
       color: #4f4b53;
     }
   `,
-  // host: {
-  //   class: 'control',
-  //   '(click)': 'onClick()'
-  // }
+  host: {
+    class: 'control',
+    '(click)': 'onClick()' // Recommended by Angular Team
+  }
 })
 export class ControlComponent {
-  @HostBinding('class') className = 'control';
-  @HostListener('click')
+  // @HostBinding('class') className = 'control';
+  // @HostListener('click')
   onClick() {
     console.log("CLICKED")
   }
