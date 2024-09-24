@@ -1,11 +1,12 @@
-import { Component, input } from '@angular/core';
+import { Component, input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-control',
   standalone: true,
   imports: [],
+  encapsulation: ViewEncapsulation.None,
   template: `
-    <p>
+    <p class="control">
       <label [for]="id()">{{title()}}</label>
        <ng-content select="input, textarea" />
     </p>
@@ -34,5 +35,4 @@ import { Component, input } from '@angular/core';
 export class ControlComponent {
   title = input.required<string>();
   id = input.required<string>();
-
 }
