@@ -1,15 +1,10 @@
 <main>
   <div id="dashboard">
-    <div class="dashboard-item">
-      <app-server-status />
-    </div>
 
-    <div class="dashboard-item">
-      <app-traffic />
-    </div>
-
-    <div class="dashboard-item">
-      <app-tickets />
-    </div>
+    @for (item of dashboardItems; track $index) {
+      <app-dashboard-item [item]="item">
+        <ng-container *ngComponentOutlet="item.component"></ng-container>
+      </app-dashboard-item>
+    }
   </div>
 </main>
