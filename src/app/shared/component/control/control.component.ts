@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostBinding, HostListener, inject, input, ViewEncapsulation } from '@angular/core';
+import { Component, contentChild, ContentChild, ElementRef, HostBinding, HostListener, inject, input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-control',
@@ -31,7 +31,7 @@ import { Component, ElementRef, HostBinding, HostListener, inject, input, ViewEn
   `,
   host: {
     class: 'control',
-    // '(click)': 'onClick()' // Recommended by Angular Team
+    '(click)': 'onClick()' // Recommended by Angular Team
   }
 })
 export class ControlComponent {
@@ -42,13 +42,18 @@ export class ControlComponent {
 
   // private el = inject(ElementRef);
 
+  // @ContentChild('input') private control?: ElementRef<HTMLInputElement | HTMLTextAreaElement>
+
+  private control = contentChild.required<ElementRef<HTMLInputElement | HTMLTextAreaElement>>('input');
+
   title = input.required<string>();
   id = input.required<string>();
 
-  // onClick() {
-  //   console.log("CLICKED");
-  //   console.log(this.el)
-  // }
+  onClick() {
+    console.log("CLICKED");
+    // console.log(this.el);
+    console.log(this.control());
+  }
 
 
 
