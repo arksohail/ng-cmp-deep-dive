@@ -6,9 +6,13 @@ import { Component, input } from '@angular/core';
   imports: [],
   template: `
     <span>
-      <ng-content />
+      <ng-content>
+        Click
+      </ng-content>
     </span>
-    <ng-content select=".icon" />
+    <ng-content select=".icon">
+      >
+    </ng-content>
   `,
   styles: ``
 })
