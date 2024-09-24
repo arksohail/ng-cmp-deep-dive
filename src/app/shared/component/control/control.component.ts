@@ -31,7 +31,7 @@ import { Component, ElementRef, HostBinding, HostListener, inject, input, ViewEn
   `,
   host: {
     class: 'control',
-    '(click)': 'onClick()' // Recommended by Angular Team
+    // '(click)': 'onClick()' // Recommended by Angular Team
   }
 })
 export class ControlComponent {
@@ -40,15 +40,15 @@ export class ControlComponent {
   //   console.log("CLICKED")
   // }
 
-  private el = inject(ElementRef);
+  // private el = inject(ElementRef);
 
   title = input.required<string>();
   id = input.required<string>();
 
-  onClick() {
-    console.log("CLICKED");
-    console.log(this.el)
-  }
+  // onClick() {
+  //   console.log("CLICKED");
+  //   console.log(this.el)
+  // }
 
 
 
