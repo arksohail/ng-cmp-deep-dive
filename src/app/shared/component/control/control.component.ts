@@ -1,4 +1,4 @@
-import { Component, input, ViewEncapsulation } from '@angular/core';
+import { Component, HostBinding, HostListener, input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-control',
@@ -29,11 +29,18 @@ import { Component, input, ViewEncapsulation } from '@angular/core';
       color: #4f4b53;
     }
   `,
-  host: {
-    class: 'control'
-  }
+  // host: {
+  //   class: 'control',
+  //   '(click)': 'onClick()'
+  // }
 })
 export class ControlComponent {
+  @HostBinding('class') className = 'control';
+  @HostListener('click')
+  onClick() {
+    console.log("CLICKED")
+  }
   title = input.required<string>();
   id = input.required<string>();
+
 }
