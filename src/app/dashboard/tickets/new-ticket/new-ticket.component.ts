@@ -15,15 +15,17 @@ export class NewTicketComponent implements AfterViewInit, OnInit {
   @ViewChild('form') form?: ElementRef<HTMLFormElement>;
   // private form = viewChild.required<ElementRef<HTMLFormElement>>('form')
   // @Output() add = new EventEmitter<{title:string, text: string}>();
-  add = output<{title:string, text: string}>()
+  add = output<{ title: string, text: string }>()
+  titleInput: string = "";
+  requestInput: string = "";
 
   ngAfterViewInit(): void {
     //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
     //Add 'implements AfterViewInit' to the class.
     console.log("AFTER VIEW INIT");
-    console.log(this.form?.nativeElement);    
+    console.log(this.form?.nativeElement);
   }
-  
+
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
@@ -33,13 +35,13 @@ export class NewTicketComponent implements AfterViewInit, OnInit {
 
   onSubmit(titleInput: string, requestInput: string) {
     console.log("SUBMITTED!", titleInput, requestInput);
-
-    this.form?.nativeElement.reset();
-
     this.add.emit({
       title: titleInput,
       text: requestInput
-    })
+    });
+    // this.form?.nativeElement.reset();
+    this.titleInput = "";
+    this.requestInput = "";
   }
 
 }
