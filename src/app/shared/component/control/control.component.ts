@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, contentChild, ContentChild, ElementRef, HostBinding, HostListener, inject, input, OnInit, ViewEncapsulation } from '@angular/core';
+import { AfterContentInit, afterNextRender, afterRender, Component, contentChild, ContentChild, ElementRef, HostBinding, HostListener, inject, input, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-control',
@@ -45,6 +45,16 @@ export class ControlComponent implements AfterContentInit, OnInit {
   @ContentChild('input') private control?: ElementRef<HTMLInputElement | HTMLTextAreaElement>
 
   // private control = contentChild.required<ElementRef<HTMLInputElement | HTMLTextAreaElement>>('input');
+
+  constructor() {
+    afterRender(()=> {
+      console.log("AFTER RENDER")
+    });
+
+    afterNextRender(()=> {
+      console.log("AFTER NEXT RENDER")
+    })
+  }
 
   ngAfterContentInit(): void {
     //Called after ngOnInit when the component's or directive's content has been initialized.
