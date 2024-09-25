@@ -1,4 +1,4 @@
-import { Component, Input, input, signal } from '@angular/core';
+import { Component, EventEmitter, Input, input, output, Output, signal } from '@angular/core';
 import { Ticket } from '../ticket.model';
 
 @Component({
@@ -12,6 +12,9 @@ export class TicketComponent {
   // @Input({required: true}) ticket?: Ticket;
   ticket = input.required<Ticket>();
 
+  // @Output() close = new EventEmitter<string>();
+  close = output();
+
   detailsVisible = signal(false);
   // detailsVisible = false;
 
@@ -20,5 +23,9 @@ export class TicketComponent {
     this.detailsVisible.update((isVisible) => !isVisible);
 
     // this.detailsVisible = !this.detailsVisible;
+  }
+
+  onMarkAsCompleted() {
+    this.close.emit();
   }
 }

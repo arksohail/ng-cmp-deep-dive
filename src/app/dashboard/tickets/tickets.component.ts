@@ -13,7 +13,7 @@ import { TicketComponent } from "./ticket/ticket.component";
 export class TicketsComponent {
   tickets: Ticket[] = [];
 
-  onAdd(data: {title: string, text: string}) {
+  onAdd(data: { title: string, text: string }) {
     this.tickets.push({
       id: new Date().getTime().toString(),
       title: data.title,
@@ -21,5 +21,11 @@ export class TicketsComponent {
       status: 'open'
     });
     console.log(this.tickets)
+  }
+
+  onCloseTicket(id: string) {
+    this.tickets.forEach((ticket) => {
+      if(ticket.id === id) ticket.status = 'close';
+    });
   }
 }
