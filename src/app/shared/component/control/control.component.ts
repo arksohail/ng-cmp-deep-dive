@@ -1,4 +1,4 @@
-import { Component, contentChild, ContentChild, ElementRef, HostBinding, HostListener, inject, input, ViewEncapsulation } from '@angular/core';
+import { AfterContentInit, Component, contentChild, ContentChild, ElementRef, HostBinding, HostListener, inject, input, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-control',
@@ -34,7 +34,7 @@ import { Component, contentChild, ContentChild, ElementRef, HostBinding, HostLis
     '(click)': 'onClick()' // Recommended by Angular Team
   }
 })
-export class ControlComponent {
+export class ControlComponent implements AfterContentInit, OnInit {
   // @HostBinding('class') className = 'control';
   // @HostListener('click') onClick() {
   //   console.log("CLICKED")
@@ -42,9 +42,22 @@ export class ControlComponent {
 
   // private el = inject(ElementRef);
 
-  // @ContentChild('input') private control?: ElementRef<HTMLInputElement | HTMLTextAreaElement>
+  @ContentChild('input') private control?: ElementRef<HTMLInputElement | HTMLTextAreaElement>
 
-  private control = contentChild.required<ElementRef<HTMLInputElement | HTMLTextAreaElement>>('input');
+  // private control = contentChild.required<ElementRef<HTMLInputElement | HTMLTextAreaElement>>('input');
+
+  ngAfterContentInit(): void {
+    //Called after ngOnInit when the component's or directive's content has been initialized.
+    //Add 'implements AfterContentInit' to the class.
+    console.log("AFTER CONTENT INIT", this.control);
+  }
+  
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    console.log("ON INIT", this.control);
+    
+  }
 
   title = input.required<string>();
   id = input.required<string>();
@@ -52,9 +65,6 @@ export class ControlComponent {
   onClick() {
     console.log("CLICKED");
     // console.log(this.el);
-    console.log(this.control());
+    // console.log(this.control());
   }
-
-
-
 }
